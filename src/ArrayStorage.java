@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Array based storage for Resumes
  */
@@ -15,16 +13,16 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (Arrays.asList(storage).contains(null)) {
-            for (int i = 0; i < storage.length; i++) {
-                if (r != null && storage[i] == null) {
-                    storage[i] = r;
-                    sizeResume++;
-                    break;
-                }
+        if (r != null) {
+            if (sizeResume < storage.length) {
+                storage[sizeResume] = r;
+                sizeResume++;
+            } else {
+                System.out.println("Массив резюме заполнен, очистите перед добавлением " + r);
             }
+
         } else {
-            System.out.println("Массив резюме заполнен, очистите перед добавлением " + r);
+            System.out.println("вводимое резюме " + r + " пустое...");
         }
     }
 
